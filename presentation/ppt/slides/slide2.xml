@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+<p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>
+<p:sp><p:nvSpPr><p:cNvPr id="2" name="Title"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="152400"/><a:ext cx="8229600" cy="609600"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:solidFill><a:srgbClr val="667EEA"/></a:solidFill></p:spPr><p:txBody><a:bodyPr anchor="ctr"/><a:lstStyle/><a:p><a:pPr algn="ctr"/><a:r><a:rPr lang="en-US" sz="2800" b="1"><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill></a:rPr><a:t>INTRODUCTION</a:t></a:r></a:p></p:txBody></p:sp>
+<p:sp><p:nvSpPr><p:cNvPr id="3" name="Content"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="914400"/><a:ext cx="8229600" cy="5486400"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr><p:txBody><a:bodyPr anchor="t"/><a:lstStyle/>
+<a:p><a:pPr marL="342900"><a:buFont typeface="Arial"/><a:buChar char="&#8226;"/></a:pPr><a:r><a:rPr lang="en-US" sz="1800" b="1"><a:solidFill><a:srgbClr val="667EEA"/></a:solidFill></a:rPr><a:t>What is Njangi?</a:t></a:r></a:p>
+<a:p><a:pPr marL="685800"/><a:r><a:rPr lang="en-US" sz="1600"><a:solidFill><a:srgbClr val="333333"/></a:solidFill></a:rPr><a:t>Traditional African savings practice where groups pool money regularly</a:t></a:r></a:p>
+<a:p><a:pPr marL="685800"/><a:r><a:rPr lang="en-US" sz="1600"><a:solidFill><a:srgbClr val="333333"/></a:solidFill></a:rPr><a:t>Members take turns receiving pooled funds (called "hands")</a:t></a:r></a:p>
+<a:p><a:pPr marL="685800"/><a:r><a:rPr lang="en-US" sz="1600"><a:solidFill><a:srgbClr val="333333"/></a:solidFill></a:rPr><a:t>Promotes financial discipline and community bonding</a:t></a:r></a:p>
+<a:p><a:pPr marL="342900"><a:buFont typeface="Arial"/><a:buChar char="&#8226;"/></a:pPr><a:r><a:rPr lang="en-US" sz="1800" b="1"><a:solidFill><a:srgbClr val="667EEA"/></a:solidFill></a:rPr><a:t>The Challenge</a:t></a:r></a:p>
+<a:p><a:pPr marL="685800"/><a:r><a:rPr lang="en-US" sz="1600"><a:solidFill><a:srgbClr val="333333"/></a:solidFill></a:rPr><a:t>Manual/paper-based methods prone to errors</a:t></a:r></a:p>
+<a:p><a:pPr marL="685800"/><a:r><a:rPr lang="en-US" sz="1600"><a:solidFill><a:srgbClr val="333333"/></a:solidFill></a:rPr><a:t>Limited transparency and accessibility</a:t></a:r></a:p>
+<a:p><a:pPr marL="342900"><a:buFont typeface="Arial"/><a:buChar char="&#8226;"/></a:pPr><a:r><a:rPr lang="en-US" sz="1800" b="1"><a:solidFill><a:srgbClr val="667EEA"/></a:solidFill></a:rPr><a:t>Our Solution - ONIX</a:t></a:r></a:p>
+<a:p><a:pPr marL="685800"/><a:r><a:rPr lang="en-US" sz="1600"><a:solidFill><a:srgbClr val="333333"/></a:solidFill></a:rPr><a:t>Web-based digital platform to automate Njangi management</a:t></a:r></a:p>
+<a:p><a:pPr marL="685800"/><a:r><a:rPr lang="en-US" sz="1600"><a:solidFill><a:srgbClr val="333333"/></a:solidFill></a:rPr><a:t>Real-time tracking, notifications, and transparent payout cycles</a:t></a:r></a:p>
+</p:txBody></p:sp>
+</p:spTree></p:cSld></p:sld>

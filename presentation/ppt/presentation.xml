@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:presentation xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" saveSubsetFonts="1">
+<p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/></p:sldMasterIdLst>
+<p:sldIdLst>
+<p:sldId id="256" r:id="rId2"/>
+<p:sldId id="257" r:id="rId3"/>
+<p:sldId id="258" r:id="rId4"/>
+<p:sldId id="259" r:id="rId5"/>
+<p:sldId id="260" r:id="rId6"/>
+<p:sldId id="261" r:id="rId7"/>
+<p:sldId id="262" r:id="rId8"/>
+<p:sldId id="263" r:id="rId9"/>
+<p:sldId id="264" r:id="rId10"/>
+<p:sldId id="265" r:id="rId11"/>
+<p:sldId id="266" r:id="rId12"/>
+<p:sldId id="267" r:id="rId13"/>
+<p:sldId id="268" r:id="rId14"/>
+</p:sldIdLst>
+<p:sldSz cx="9144000" cy="6858000" type="screen4x3"/>
+<p:notesSz cx="6858000" cy="9144000"/>
+</p:presentation>

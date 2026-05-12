@@ -1,0 +1,137 @@
+<?php
+require_once '../config/constants.php';
+requireLogin();
+require_once '../config/database.php';
+
+$conn = getDbConnection();
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
+    $action = $_POST['action'];
+    $amount = mysqli_real_escape_string($conn, $_POST['amount']);
+    $transaction_date = mysqli_real_escape_string($conn, $_POST['transaction_date']);
+    $description = mysqli_real_escape_string($conn, $_POST['description'] ?? '');
+    $reference_number = mysqli_real_escape_string($conn, $_POST['reference_number'] ?? '');
+    
+    // Get current balance for calculations
+    $total_deposits_sql = "SELECT SUM(amount) as total FROM piggie_box_transactions 
+                            WHERE transaction_type IN ('DEPOSIT', 'INTEREST')";
+    $total_deposits_result = mysqli_query($conn, $total_deposits_sql);
+    $total_deposits = mysqli_fetch_assoc($total_deposits_result)['total'] ?? 0;
+    
+    $total_withdrawals_sql = "SELECT SUM(amount) as total FROM piggie_box_transactions 
+                               WHERE transaction_type = 'WITHDRAWAL'";
+    $total_withdrawals_result = mysqli_query($conn, $total_withdrawals_sql);
+    $total_withdrawals = mysqli_fetch_assoc($total_withdrawals_result)['total'] ?? 0;
+    
+    $current_balance = $total_deposits - $total_withdrawals;
+    
+    // Start transaction
+    mysqli_begin_transaction($conn);
+    
+    try {
+        if ($action == 'deposit') {
+            // Process deposit
+            $new_balance = $current_balance + $amount;
+            
+            $sql = "INSERT INTO piggie_box_transactions 
+                    (transaction_type, amount, description, transaction_date, balance_after, reference_number, recorded_by) 
+                    VALUES ('DEPOSIT', '$amount', '$description', '$transaction_date', '$new_balance', '$reference_number', '" . $_SESSION['admin_id'] . "')";
+            
+            if (mysqli_query($conn, $sql)) {
+                // Also update or create saved record
+                $check_sql = "SELECT id FROM saved_records 
+                              WHERE record_type = 'piggie_box' AND title LIKE '%Deposit%' 
+                              ORDER BY id DESC LIMIT 1";
+                $check_result = mysqli_query($conn, $check_sql);
+                
+                if (mysqli_num_rows($check_result) > 0) {
+                    $record = mysqli_fetch_assoc($check_result);
+                    $update_sql = "UPDATE saved_records SET 
+                                   amount = amount + $amount,
+                                   description = CONCAT(description, '\nNew deposit: ', '$description'),
+                                   updated_at = NOW()
+                                   WHERE id = " . $record['id'];
+                    mysqli_query($conn, $update_sql);
+                }
+                
+                mysqli_commit($conn);
+                header('Location: piggie_box.php?success=Deposit processed successfully');
+                exit();
+            } else {
+                throw new Exception('Error processing deposit: ' . mysqli_error($conn));
+            }
+            
+        } elseif ($action == 'withdrawal') {
+            // Check if sufficient balance
+            if ($amount > $current_balance) {
+                throw new Exception('Insufficient balance! Available: ' . formatCurrency($current_balance));
+            }
+            
+            $new_balance = $current_balance - $amount;
+            
+            $sql = "INSERT INTO piggie_box_transactions 
+                    (transaction_type, amount, description, transaction_date, balance_after, reference_number, recorded_by) 
+                    VALUES ('WITHDRAWAL', '$amount', '$description', '$transaction_date', '$new_balance', '$reference_number', '" . $_SESSION['admin_id'] . "')";
+            
+            if (mysqli_query($conn, $sql)) {
+                // Update saved record
+                $update_sql = "UPDATE saved_records SET 
+                               amount = amount - $amount,
+                               description = CONCAT(description, '\nWithdrawal: ', '$description'),
+                               updated_at = NOW()
+                               WHERE record_type = 'piggie_box' AND is_active = 1 
+                               ORDER BY id DESC LIMIT 1";
+                mysqli_query($conn, $update_sql);
+                
+                mysqli_commit($conn);
+                header('Location: piggie_box.php?success=Withdrawal processed successfully');
+                exit();
+            } else {
+                throw new Exception('Error processing withdrawal: ' . mysqli_error($conn));
+            }
+            
+        } elseif ($action == 'interest') {
+            // Process interest
+            $interest_rate = mysqli_real_escape_string($conn, $_POST['interest_rate'] ?? '');
+            $period = mysqli_real_escape_string($conn, $_POST['period'] ?? 'monthly');
+            
+            $interest_description = "Interest added";
+            if (!empty($interest_rate)) {
+                $interest_description .= " at {$interest_rate}%";
+            }
+            if (!empty($period)) {
+                $interest_description .= " ({$period})";
+            }
+            if (!empty($description)) {
+                $interest_description .= " - " . $description;
+            }
+            
+            $new_balance = $current_balance + $amount;
+            
+            $sql = "INSERT INTO piggie_box_transactions 
+                    (transaction_type, amount, description, transaction_date, balance_after, reference_number, recorded_by) 
+                    VALUES ('INTEREST', '$amount', '$interest_description', '$transaction_date', '$new_balance', '$reference_number', '" . $_SESSION['admin_id'] . "')";
+            
+            if (mysqli_query($conn, $sql)) {
+                mysqli_commit($conn);
+                header('Location: piggie_box.php?success=Interest added successfully');
+                exit();
+            } else {
+                throw new Exception('Error adding interest: ' . mysqli_error($conn));
+            }
+        }
+        
+    } catch (Exception $e) {
+        mysqli_rollback($conn);
+        $error = $e->getMessage();
+        header('Location: piggie_box.php?error=' . urlencode($error));
+        exit();
+    }
+}
+
+closeDbConnection($conn);
+header('Location: piggie_box.php');
+exit();
+?>
