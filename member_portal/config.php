@@ -24,13 +24,17 @@ function getMemberName() {
     return $_SESSION['member_name'] ?? 'Member';
 }
 
-function formatCurrency($amount) {
-    return number_format($amount, 0, '.', ',') . ' FCFA';
+if (!function_exists('formatCurrency')) {
+    function formatCurrency($amount) {
+        return number_format($amount, 0, '.', ',') . ' FCFA';
+    }
 }
 
-function formatDate($date) {
-    if (empty($date)) return '-';
-    return date('d/m/Y', strtotime($date));
+if (!function_exists('formatDate')) {
+    function formatDate($date) {
+        if (empty($date)) return '-';
+        return date('d/m/Y', strtotime($date));
+    }
 }
 
 function timeAgo($datetime) {

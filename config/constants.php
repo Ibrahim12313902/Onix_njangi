@@ -4,11 +4,25 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Site constants
-define('SITE_NAME', 'ONIX - Njangi Management System');
-define('SITE_URL', 'http://localhost/onix_njangi/');
-define('CURRENCY', 'FCFA');
-define('CURRENCY_SYMBOL', 'FCFA');
+// Site constants - with defined() check to prevent double-include errors
+if (!defined('SITE_NAME')) {
+    define('SITE_NAME', 'ONIX - Njangi Management System');
+}
+if (!defined('SITE_URL')) {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    $dir = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? ''), '/\\');
+    if (strpos($dir, '/config') !== false) {
+        $dir = dirname($dir);
+    }
+    define('SITE_URL', $protocol . $host . $dir . '/');
+}
+if (!defined('CURRENCY')) {
+    define('CURRENCY', 'FCFA');
+}
+if (!defined('CURRENCY_SYMBOL')) {
+    define('CURRENCY_SYMBOL', 'FCFA');
+}
 
 // Admin session check
 function isAdminLoggedIn() {
