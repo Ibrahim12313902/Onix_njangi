@@ -11,11 +11,7 @@ if (!defined('SITE_NAME')) {
 if (!defined('SITE_URL')) {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
     $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-    $dir = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? ''), '/\\');
-    if (strpos($dir, '/config') !== false) {
-        $dir = dirname($dir);
-    }
-    define('SITE_URL', $protocol . $host . $dir . '/');
+    define('SITE_URL', $protocol . $host . '/');
 }
 if (!defined('CURRENCY')) {
     define('CURRENCY', 'FCFA');
