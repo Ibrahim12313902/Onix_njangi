@@ -12,11 +12,10 @@ function getDbConnection() {
     $pass = DB_PASS;
     $name = DB_NAME;
 
-    // If on Render (environment variables set), use SSL connection
+    // If on Render (environment variables set)
     if (getenv('DB_HOST')) {
         $conn = mysqli_init();
-        mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
-        mysqli_real_connect($conn, $host, $user, $pass, $name, NULL, NULL, MYSQLI_CLIENT_SSL);
+        mysqli_real_connect($conn, $host, $user, $pass, $name, 24823, NULL, 0);
     } else {
         // Local development
         $conn = mysqli_connect($host, $user, $pass, $name);
