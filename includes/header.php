@@ -135,7 +135,7 @@
         </button>
         <h1><i class="fas fa-hand-holding-heart"></i> <?php echo SITE_NAME; ?></h1>
     </div>
-    
+
     <div class="header-right">
         <div class="notification-dropdown">
             <button class="notification-btn" onclick="toggleNotifications()">
@@ -157,7 +157,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="user-info">
             <div class="user-avatar">
                 <i class="fas fa-user-circle"></i>
@@ -165,12 +165,67 @@
             <span class="user-name"><?php echo htmlspecialchars($_SESSION['admin_name'] ?? 'Admin'); ?></span>
         </div>
         <a href="<?php echo SITE_URL; ?>logout.php" class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i> Logout
+            <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
         </a>
     </div>
 </header>
 
 <script>
+// Mobile sidebar toggle
+document.addEventListener('DOMContentLoaded', function() {
+    var menuBtn = document.getElementById('mobileMenuBtn');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+
+    function openMenu() {
+        sidebar.classList.add('menu-open');
+        overlay.classList.add('show');
+        document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+        sidebar.classList.remove('menu-open');
+        overlay.classList.remove('show');
+        document.body.classList.remove('menu-open');
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (sidebar.classList.contains('menu-open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
+
+    // Close sidebar on link click (mobile)
+    if (sidebar) {
+        sidebar.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    closeMenu();
+                }
+            });
+        });
+    }
+
+    // Handle window resize - ensure no layout issues
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('menu-open');
+            if (overlay) overlay.classList.remove('show');
+            document.body.classList.remove('menu-open');
+        }
+    });
+});
+
+// Notifications
 function toggleNotifications() {
     var panel = document.getElementById('notificationPanel');
     panel.classList.toggle('show');
@@ -179,12 +234,13 @@ function toggleNotifications() {
     }
 }
 
-// Close notification panel when clicking outside
 document.addEventListener('click', function(e) {
     var panel = document.getElementById('notificationPanel');
     var btn = document.querySelector('.notification-btn');
-    if (!panel.contains(e.target) && !btn.contains(e.target)) {
-        panel.classList.remove('show');
+    if (panel && btn) {
+        if (!panel.contains(e.target) && !btn.contains(e.target)) {
+            panel.classList.remove('show');
+        }
     }
 });
 
@@ -219,7 +275,7 @@ function timeAgo(dateString) {
     var date = new Date(dateString);
     var now = new Date();
     var diff = (now - date) / 1000;
-    
+
     if (diff < 60) return 'Just now';
     if (diff < 3600) return Math.floor(diff / 60) + ' min ago';
     if (diff < 86400) return Math.floor(diff / 3600) + ' hours ago';
