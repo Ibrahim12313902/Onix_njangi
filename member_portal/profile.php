@@ -283,6 +283,7 @@ closeDbConnection($conn);
         <div>
             <h2><i class="fas fa-hand-holding-heart"></i> ONIX Njangi</h2>
         </div>
+        <button class="member-menu-btn" onclick="toggleMemberMenu()" aria-label="Toggle menu">☰</button>
         <nav class="member-nav">
             <a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
             <a href="contributions.php"><i class="fas fa-coins"></i> Contributions</a>
@@ -449,6 +450,10 @@ function timeAgo(dateString) {
     if (diff < 86400) return Math.floor(diff / 3600) + ' hours ago';
     if (diff < 604800) return Math.floor(diff / 86400) + ' days ago';
     return date.toLocaleDateString();
+}
+function toggleMemberMenu() {
+    var nav = document.querySelector('.member-nav');
+    nav.classList.toggle('menu-open');
 }
 </script>
 </body>

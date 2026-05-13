@@ -1377,6 +1377,371 @@ body {
     }
 }
 
+/* ================================
+   MEMBER PORTAL RESPONSIVE STYLES
+   ================================ */
+
+/* Mobile hamburger for member portal */
+.member-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Member portal responsive */
+@media (max-width: 1024px) {
+    .member-content {
+        padding: 20px !important;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .questions-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .member-header {
+        padding: 15px 20px !important;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .member-header h2 {
+        font-size: 16px !important;
+    }
+
+    .member-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0 !important;
+        background: rgba(0,0,0,0.1);
+        border-radius: 8px;
+        padding: 5px 0;
+    }
+
+    .member-nav.menu-open {
+        display: flex;
+    }
+
+    .member-nav a {
+        padding: 12px 15px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .member-nav a:last-child {
+        border-bottom: none;
+    }
+
+    .member-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .member-content {
+        padding: 15px !important;
+    }
+
+    .welcome-banner {
+        padding: 20px !important;
+    }
+
+    .welcome-banner h2 {
+        font-size: 18px !important;
+    }
+
+    .position-highlight {
+        font-size: 15px !important;
+        padding: 8px 15px !important;
+    }
+
+    .position-highlight strong {
+        font-size: 20px !important;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    .stat-card {
+        padding: 15px !important;
+    }
+
+    .stat-card .value {
+        font-size: 20px !important;
+    }
+
+    .stat-card .icon {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    .info-card {
+        padding: 15px !important;
+    }
+
+    .info-card h3 {
+        font-size: 15px !important;
+    }
+
+    .questions-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .question-box {
+        padding: 20px !important;
+    }
+
+    .question-item {
+        padding: 12px !important;
+    }
+
+    .question-item h4 {
+        font-size: 13px !important;
+    }
+
+    .question-item p {
+        font-size: 14px !important;
+    }
+
+    .member-list-item {
+        padding: 10px !important;
+        flex-wrap: wrap;
+    }
+
+    .member-list-item .position {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 13px !important;
+        margin-right: 10px !important;
+    }
+
+    .member-list-item .name {
+        font-size: 14px !important;
+    }
+
+    .member-list-item .amount {
+        font-size: 12px !important;
+    }
+
+    .nav-right {
+        gap: 10px !important;
+    }
+
+    .notification-panel {
+        width: 300px !important;
+        right: -60px !important;
+    }
+
+    .notification-btn {
+        padding: 6px 10px !important;
+        font-size: 16px !important;
+    }
+
+    /* My Hands page specific */
+    .hand-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hand-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Payout schedule */
+    .payout-timeline {
+        padding: 15px !important;
+    }
+
+    .timeline-item {
+        padding: 12px !important;
+    }
+
+    .timeline-item .position {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 14px !important;
+    }
+
+    /* Forms in member portal */
+    .member-form {
+        padding: 20px !important;
+    }
+
+    .member-form .form-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Profile page */
+    .profile-card {
+        padding: 20px !important;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-avatar {
+        margin: 0 auto;
+    }
+
+    /* Chat page */
+    .chat-container {
+        height: calc(100vh - 250px) !important;
+    }
+
+    .chat-input-area {
+        flex-wrap: wrap;
+    }
+
+    .chat-input-area input {
+        width: 100% !important;
+    }
+
+    .chat-input-area button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-header {
+        padding: 12px 15px !important;
+    }
+
+    .member-header h2 {
+        font-size: 14px !important;
+    }
+
+    .member-content {
+        padding: 12px !important;
+    }
+
+    .welcome-banner {
+        padding: 15px !important;
+        border-radius: 8px !important;
+    }
+
+    .welcome-banner h2 {
+        font-size: 16px !important;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .stat-card {
+        padding: 12px !important;
+        border-radius: 8px !important;
+    }
+
+    .stat-card .icon {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 16px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .stat-card .label {
+        font-size: 10px !important;
+    }
+
+    .stat-card .value {
+        font-size: 18px !important;
+    }
+
+    .questions-grid {
+        gap: 10px !important;
+    }
+
+    .info-card {
+        padding: 12px !important;
+        border-radius: 8px !important;
+    }
+
+    .info-card h3 {
+        font-size: 14px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .question-box {
+        padding: 15px !important;
+        border-radius: 8px !important;
+    }
+
+    .question-box h3 {
+        font-size: 15px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .question-item p {
+        font-size: 13px !important;
+    }
+
+    .notification-panel {
+        width: 280px !important;
+        right: -80px !important;
+    }
+
+    .notification-item {
+        padding: 10px 12px !important;
+    }
+
+    .notification-title {
+        font-size: 12px !important;
+    }
+
+    .nav-right .logout-btn span {
+        display: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .member-header {
+        padding: 10px 12px !important;
+    }
+
+    .member-content {
+        padding: 10px !important;
+    }
+
+    .welcome-banner h2 {
+        font-size: 14px !important;
+    }
+}
+
 /* Very small phones */
 @media (max-width: 360px) {
     .main-content {
