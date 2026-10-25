@@ -1,0 +1,26 @@
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Runtime uploads and generated data
+/uploads/*
+!/uploads/profiles/
+/uploads/profiles/*
+!/uploads/profiles/.gitkeep
+/backups/
+*.log
+
+# Local editor / OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencies / generated artifacts (if introduced later)
+/vendor/
+/node_modules/
+/dist/
+/build/
