@@ -1,0 +1,17 @@
+Title,Area,Priority,Status,Description
+Fix incomplete hands/contributions.php file,Quality,P0 Critical,Backlog,"Restore the missing end of the truncated PHP file from a known-good source, then lint and test the contributions page."
+Remove hard-coded administrator password bypass,Security,P0 Critical,Backlog,Remove fixed-password login condition and rely on password_verify().
+Implement secure first-admin setup and password reset,Security,P0 Critical,Backlog,Replace placeholder seed credentials with secure first-run setup.
+Review authorization for all admin and member routes,Security,P0 Critical,Backlog,Verify role/session checks on all protected actions.
+Replace user-input SQL strings with prepared statements,Database,P1 High,Backlog,Audit queries and use prepared statements.
+Add CSRF protection to state-changing forms,Security,P1 High,Backlog,"Protect create, update, delete, payout, and settings forms."
+Review upload validation and access restrictions,Security,P1 High,Backlog,Validate uploads and prevent execution of uploaded files.
+Validate database setup from a clean installation,Database,P1 High,Backlog,Test schema import and startup on a fresh local database.
+Test member registration and member management workflows,Members,P1 High,Backlog,"Test create, edit, view, delete, and password setup flows."
+Test contribution recording and totals,Contributions,P1 High,Backlog,"Verify amounts, totals, and edge cases using fictional data."
+"Test payout-cycle creation, order, and completion",Payouts,P1 High,Backlog,"Verify cycle statuses, payout order, and notifications."
+"Test member portal login, profile, and payout schedule",Member Portal,P2 Normal,Backlog,Exercise member-facing flows with test accounts.
+Add demo screenshots using fictional data,Documentation,P2 Normal,Backlog,Add screenshots without real member or financial data.
+Document local setup and deployment configuration,Documentation,P2 Normal,Backlog,Verify README instructions on a clean environment.
+Add a repeatable regression test checklist,Quality,P2 Normal,Backlog,Document core manual test scenarios or automate where feasible.
+Review responsive layout and accessibility,UX,P3 Low,Backlog,"Check mobile layout, keyboard navigation, and labels."
